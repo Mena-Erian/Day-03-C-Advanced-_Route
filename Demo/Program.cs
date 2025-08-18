@@ -22,7 +22,6 @@ namespace Demo
                     if (predicate/*.Invoke*/(num)) Result.Add(num);
             return Result;
         }
-
         public static List<int> FindNumbers(List<int> Numbers, CustomPredicate predicate)
         {
             List<int> Result = new List<int>(Numbers.Count);
@@ -42,7 +41,8 @@ namespace Demo
             return Result;
         }
 
-
+        public static Action DoAction() { return () => Console.WriteLine("Hello")};
+        public static Action DoActionLambaExprission() => () => Console.WriteLine("Hello");
         static void Main()
         {
             /// Delegate is a C# Language Feature [C# 2.0]
