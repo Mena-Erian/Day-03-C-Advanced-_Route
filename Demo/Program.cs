@@ -168,6 +168,20 @@ namespace Demo
             /// action("Mena"); 
             #endregion
 
+            #region Part 08 New Feature at Delegate in C# 10.0
+            // var keyword -> Implicitly Typed Local Variable [C# 2.0]
+
+            /// var predicate = delegate (int Number) { return Number > 0; };
+            /// predicate(10);
+            /// 
+            /// var func = delegate (int Number) { return Number > 0; };
+            /// func(10);
+            /// 
+            /// var action = delegate (string Name) { Console.Write(Name); };
+            /// action/*.Invoke*/("Mena");
+            /// action("Mena"); 
+            #endregion
+
 
         }
     }
