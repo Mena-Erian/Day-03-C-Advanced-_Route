@@ -169,7 +169,7 @@ namespace Demo
             #endregion
 
             #region Part 08 New Feature at Delegate in C# 10.0
-            // var keyword -> Implicitly Typed Local Variable [C# 2.0]
+            /// // var keyword -> Implicitly Typed Local Variable [C# 2.0]
 
             /// var predicate = delegate (int Number) { return Number > 0; };
             /// predicate(10);
@@ -182,7 +182,17 @@ namespace Demo
             /// action("Mena"); 
             #endregion
 
-
+            #region Part 09 List Methods That Take Function as a Parameter
+            /// List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            /// FindElements<int>(Numbers, (N) => N % 2 == 1).PrintAll();
+            /// //Numbers.FindAll(x => x % 2 == 1).PrintAll();
+            /// //Numbers.Find(x => x % 2 == 1).Print();
+            /// //Numbers.FindLast(x => x % 2 == 1).Print();
+            /// //Numbers.Exists(x => x % 2 == 1).Print(); // if one el match return true // Like Some
+            /// //Numbers.TrueForAll(x => x % 2 == 1).Print(); // Like Every
+            /// //Numbers.ForEach(x => ++x);
+            /// //Numbers.RemoveAll(x => x % 2 == 1); 
+            #endregion
         }
     }
     class SomeFuns
