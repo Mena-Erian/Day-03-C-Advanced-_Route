@@ -7,8 +7,40 @@
     /// These Functions Can be Class Member [Static] or Object Member [Non-Static].
     /// These Functions Must Have the Same Signature of the Delegate: int (string).
     /// Regardless Function Access Modifier, Regardless Naming (Function, Parameters).
+    public delegate bool CustomPredicate(int obj);
+    public delegate bool CustomPredicate<in T>(T obj);
     internal class Program
     {
+        public static List<T> FindElements<T>(List<T> Numbers,Predicate<T> predicate)
+        {
+            List<T> Result = new List<T>(Numbers.Count);
+
+            if (Numbers?.Count > 0)
+                foreach (T num in Numbers)
+                    if (predicate/*.Invoke*/(num)) Result.Add(num);
+            return Result;
+        }
+
+        public static List<int> FindNumbers(List<int> Numbers, CustomPredicate predicate)
+        {
+            List<int> Result = new List<int>(Numbers.Count);
+
+            if (Numbers?.Count > 0)
+                foreach (int num in Numbers)
+                    if (predicate/*.Invoke*/(num)) Result.Add(num);
+            return Result;
+        }
+        public static List<T> FindNumbers<T>(List<T> Numbers, CustomPredicate<T> predicate)
+        {
+            List<T> Result = new List<T>(Numbers.Count);
+
+            if (Numbers?.Count > 0)
+                foreach (T num in Numbers)
+                    if (predicate/*.Invoke*/(num)) Result.Add(num);
+            return Result;
+        }
+
+
         static void Main()
         {
             /// Delegate is a C# Language Feature [C# 2.0]
@@ -57,13 +89,54 @@
             /// SortingAlgorithms.BubbleSort<string>(names, func);
             /// names.PrintAll(); 
             #endregion
-        
-        
-        
+
+            #region Delegate Example 03
+            #region Find
+            /// List<int> Numbers = Enumerable.Range(0, 100).ToList();
+            /// 
+            /// List<int> Odds = FindNumbers(Numbers, ConditionFunctions.IsOdd);
+            /// List<int> Evens = FindNumbers(Numbers, ConditionFunctions.IsEven);
+            /// 
+            /// Odds.PrintAll(); 
+            #endregion
+
+            #region 
+            /// List<int> Numbers = Enumerable.Range(0, 100).ToList();
+            /// //List<int> NumbersDisibleBySeven = FindNumbers(Numbers, ConditionFunctions.IsDivisibleBySeven);
+            /// 
+            /// CustomPredicate<int> predicate = ConditionFunctions.IsDivisibleBySeven;
+            /// List<int> NumbersDisibleBySeven = FindNumbers(Numbers, predicate);
+            /// 
+            /// NumbersDisibleBySeven.PrintAll(); 
+
+            /// /// List<int> Numbers = Enumerable.Range(0, 100).ToList();
+            /// //List<int> NumbersDisibleBySeven = FindNumbers(Numbers, ConditionFunctions.IsDivisibleBySeven);
+            /// 
+            /// // not done
+            /// //  List<string> names = ["Mena", "Erian", "Farouk", "Makar", "Gerges", "Fadelalah"];
+            /// 
+            /// 
+            /// //CustomPredicate<int> predicate = ConditionFunctions.IsDivisibleBySeven;
+            /// //List<int> NumbersDisibleBySeven = FindNumbers(Numbers, predicate);
+            /// 
+            /// //NumbersDisibleBySeven.PrintAll(); 
+            #endregion
+            #endregion
+
+
+            List<string> names = ["Mena", "Erian", "Farouk", "Makar", "Gerges", "Fadelalah"];
+
+
+            //Predicate<string> predicate = ConditionFunctions.IsMoreThan04;
+            List<string> strs = FindElements<string>(names, ConditionFunctions.IsMoreThan04);
+
+            strs.PrintAll(); 
         }
     }
     class StringFunction
     {
+        // Stratigy Design Pattern 
+
         //public StringFunction(int (string) Target)
         //{
 
@@ -89,5 +162,12 @@
 
             return count;
         }
+    }
+    class ConditionFunctions
+    {
+        public static bool IsOdd(int Number) => Number % 2 == 1;
+        public static bool IsEven(int Number) => Number % 2 == 0;
+        public static bool IsDivisibleBySeven(int Number) => (Number % 7 == 0) && Number > 1;
+        public static bool IsMoreThan04(string e) => e.Length > 4;
     }
 }
