@@ -36,17 +36,30 @@
             /// //int x = StringFunction.GetCountOfUpperCaseChars; 
             #endregion
 
-            int[] Numbers = { 1, 2, 32, 435, 3, 42, 3, 43, 5, 2, 6456, 34, 34, 5, 345, 3 };
+            #region Delegate Example 02 Using Generics
+            /// int[] Numbers = { 1, 2, 32, 435, 3, 42, 3, 43, 5, 2, 6456, 34, 34, 5, 345, 3 };
+            /// 
+            /// //SortingAlgorithms.BubbleSort(Numbers, new AscComparer());
+            /// CustomFunc<int> func1 = SortingTypes.CompareGrt;
+            /// CustomFunc<int, int> func2 = SortingTypes.CompareGrt;
+            /// CustomFunc<int, int, bool> func3 = SortingTypes.CompareGrt;
+            /// 
+            /// //SortingAlgorithms.BubbleSort(Numbers, func);
+            /// SortingAlgorithms.BubbleSort<int>(Numbers, func1);
+            /// //SortingAlgorithms.BubbleSort(Numbers, delegate (int x, int y) { return x > y });
+            /// //SortingAlgorithms.BubbleSort(Numbers, (x, y) => x > y);
+            /// Numbers.PrintAll();
 
-            //SortingAlgorithms.BubbleSort(Numbers, new AscComparer());
-
-            CustomFunc<int> func = SortingTypes.CompareGrt;
-
-            SortingAlgorithms.BubbleSort(Numbers, func);
-            //SortingAlgorithms.BubbleSort(Numbers, delegate (int x, int y) { return x > y });
-            //SortingAlgorithms.BubbleSort(Numbers, (x, y) => x > y);
-            Numbers.PrintAll();
-
+            /// string[] names = ["Mena", "Erian", "Farouk", "Makar", "Gerges", "Fadelalah"];
+            /// 
+            /// CustomFunc<string, string, bool> func = ComparsionTypes<string>.CompareGrt;
+            /// 
+            /// SortingAlgorithms.BubbleSort<string>(names, func);
+            /// names.PrintAll(); 
+            #endregion
+        
+        
+        
         }
     }
     class StringFunction
