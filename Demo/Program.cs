@@ -123,15 +123,30 @@
             #endregion
             #endregion
 
+            /// List<string> names = ["Mena", "Erian", "Farouk", "Makar", "Gerges", "Fadelalah"];
+            /// //Predicate<string> predicate = ConditionFunctions.IsMoreThan04;
+            /// List<string> strs = FindElements<string>(names, ConditionFunctions.IsMoreThan04);
+            /// 
+            /// strs.PrintAll(); 
 
-            List<string> names = ["Mena", "Erian", "Farouk", "Makar", "Gerges", "Fadelalah"];
+            #region Part 06 Built-in Delegates [Predicate, Func, Action]
+            /// Predicate<int> predicate = SomeFuns.Test;
+            /// predicate(10);
+            /// 
+            /// Func<int, bool> func = SomeFuns.Test;
+            /// func(10);
+            /// 
+            /// Action<string> action = SomeFuns.Print;
+            /// action/*.Invoke*/("Mena");
+            /// action("Mena"); 
+            #endregion
 
-
-            //Predicate<string> predicate = ConditionFunctions.IsMoreThan04;
-            List<string> strs = FindElements<string>(names, ConditionFunctions.IsMoreThan04);
-
-            strs.PrintAll(); 
         }
+    }
+     class SomeFuns
+    {
+        public static bool Test(int Number) => Number > 0;
+        public static void Print(string Name) => Console.Write(Name);
     }
     class StringFunction
     {
