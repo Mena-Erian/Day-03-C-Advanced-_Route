@@ -1,4 +1,6 @@
-﻿namespace Demo
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Demo
 {
 
     /// Step 0. Delegate Declaration
@@ -11,7 +13,7 @@
     public delegate bool CustomPredicate<in T>(T obj);
     internal class Program
     {
-        public static List<T> FindElements<T>(List<T> Numbers,Predicate<T> predicate)
+        public static List<T> FindElements<T>(List<T> Numbers, Predicate<T> predicate)
         {
             List<T> Result = new List<T>(Numbers.Count);
 
@@ -141,9 +143,35 @@
             /// action("Mena"); 
             #endregion
 
+            #region Part 07 Anonymous Method and Lambada Expression
+            /// // Anonymous Methods  
+            /// Predicate<int> predicate = delegate (int Number) { return Number > 0; };
+            /// predicate(10);
+            /// 
+            /// Func<int, bool> func = delegate (int Number) { return Number > 0};
+            /// func(10);
+            /// 
+            /// Action<string> action = delegate (string Name) { Console.Write(Name); };
+            /// action/*.Invoke*/("Mena");
+            /// action("Mena");
+
+            /// // Lambada Expression
+            /// // Called as 'FatArrow' and Read as 'GoesTO'
+            /// Predicate<int> predicate =  Number => Number > 0; ;
+            /// predicate(10);
+            /// 
+            /// Func<int, bool> func = N => N > 0;
+            /// func(10);
+            /// 
+            /// Action<string> action = (string Name) => Console.Write(Name);
+            /// action/*.Invoke*/("Mena");
+            /// action("Mena"); 
+            #endregion
+
+
         }
     }
-     class SomeFuns
+    class SomeFuns
     {
         public static bool Test(int Number) => Number > 0;
         public static void Print(string Name) => Console.Write(Name);
