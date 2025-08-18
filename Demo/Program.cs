@@ -1,5 +1,6 @@
 ﻿namespace Demo
 {
+
     /// Step 0. Delegate Declaration
     public delegate int CustomFunc(string arg01);
     /// NEW Delegate (Class), The Reference from this Delegate Can Refer to a Function or More [Pointer To Function]
@@ -34,6 +35,18 @@
             /// 
             /// //int x = StringFunction.GetCountOfUpperCaseChars; 
             #endregion
+
+            int[] Numbers = { 1, 2, 32, 435, 3, 42, 3, 43, 5, 2, 6456, 34, 34, 5, 345, 3 };
+
+            //SortingAlgorithms.BubbleSort(Numbers, new AscComparer());
+
+            CustomFunc<int> func = SortingTypes.CompareGrt;
+
+            SortingAlgorithms.BubbleSort(Numbers, func);
+            //SortingAlgorithms.BubbleSort(Numbers, delegate (int x, int y) { return x > y });
+            //SortingAlgorithms.BubbleSort(Numbers, (x, y) => x > y);
+            Numbers.PrintAll();
+
         }
     }
     class StringFunction
@@ -61,7 +74,7 @@
                 for (int i = 0; i < Name.Length; i++)
                     if (char.IsLower(Name[i])) count++;
 
-            return count; 
+            return count;
         }
     }
 }
